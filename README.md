@@ -1,2 +1,6 @@
-# metrik
-Metric tracker for in-home IoT devices
+# Metrik
+
+
+A metric tracker for your services, centralized.
+
+Built with node.js
