@@ -25,16 +25,18 @@ export async function signup(req, res) {
 // Login
 export async function login(req, res) {
   const { username, password } = req.body;
-  if (!username || !password) return res.status(400).json({ error: "Missing fields" });
+  if (!username || !password) return res.status(400).send("Missing fields");
 
   const users = JSON.parse(fs.readFileSync(usersFile, "utf-8"));
   const user = users.find(u => u.username === username);
-  if (!user) return res.status(401).json({ error: "Invalid credentials" });
+  if (!user) return res.status(401).send("Invalid credentials");
 
   const valid = await bcrypt.compare(password, user.password);
-  if (!valid) return res.status(401).json({ error: "Invalid credentials" });
+  if (!valid) return res.status(401).send("Invalid credentials");
 
   const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
 
-  res.json({ message: "Login successful", token });
+  // Store token in cookie
+  res.cookie("token", token, { httpOnly: true });
+  res.redirect("/home");
 }

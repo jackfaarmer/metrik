@@ -8,6 +8,9 @@ metrik/
 │    │   └── home.js       # landing page routes
 │    ├── controllers/
 │    │   └── authController.js
+│    ├── views/
+│    │   └── index.ejs   
+│    │   └── home.ejs   
 │    ├── middleware/
 │    │   └── authMiddleware.js
 │    └── users.json        # temporary user storage (replace w/ DB later)
