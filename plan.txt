@@ -1,12 +1,16 @@
 Current Plan
 
 metrik/
-├── src/
-│   ├── index.js        # entry point
-│   ├── routes/         # API route handlers
-│   ├── services/       # ingestion logic, transformations
-│   ├── models/         # if you later add DB
-│   └── utils/          # helpers
+│    src/
+│    ├── index.js          # entry point
+│    ├── routes/
+│    │   ├── auth.js       # login + signup routes
+│    │   └── home.js       # landing page routes
+│    ├── controllers/
+│    │   └── authController.js
+│    ├── middleware/
+│    │   └── authMiddleware.js
+│    └── users.json        # temporary user storage (replace w/ DB later)
 ├── .env
 ├── .gitignore
 ├── package.json
