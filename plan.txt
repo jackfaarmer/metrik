@@ -1,0 +1,13 @@
+Current Plan
+
+metrik/
+├── src/
+│   ├── index.js        # entry point
+│   ├── routes/         # API route handlers
+│   ├── services/       # ingestion logic, transformations
+│   ├── models/         # if you later add DB
+│   └── utils/          # helpers
+├── .env
+├── .gitignore
+├── package.json
+└── README.md
