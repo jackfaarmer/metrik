@@ -1,9 +1,19 @@
+/**
+ * index.js
+ * 
+ * @author Jack Farmer
+ * @version 0.0.1
+ * @date 29 September 2025
+ */
+
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.js";
 import homeRoutes from "./routes/home.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import cookieParser from "cookie-parser";
+
 
 dotenv.config();
 const app = express();
@@ -18,6 +28,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); // <– for form POSTs
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
+
+app.use(cookieParser());
+
 
 // Routes
 app.use("/auth", authRoutes);

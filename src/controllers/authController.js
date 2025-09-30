@@ -22,7 +22,6 @@ export async function signup(req, res) {
   res.json({ message: "User created successfully" });
 }
 
-// Login
 export async function login(req, res) {
   const { username, password } = req.body;
   if (!username || !password) return res.status(400).send("Missing fields");
@@ -34,9 +33,14 @@ export async function login(req, res) {
   const valid = await bcrypt.compare(password, user.password);
   if (!valid) return res.status(401).send("Invalid credentials");
 
+  // Create JWT with 1h expiry
   const token = jwt.sign({ username }, JWT_SECRET, { expiresIn: "1h" });
 
-  // Store token in cookie
-  res.cookie("token", token, { httpOnly: true });
+  // Store token in a cookie
+  res.cookie("token", token, {
+    httpOnly: true,
+    maxAge: 60 * 60 * 1000, // 1 hour
+  });
+
   res.redirect("/home");
 }

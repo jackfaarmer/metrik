@@ -11,4 +11,9 @@ router.get("/login", (req, res) => res.render("index"));
 router.post("/signup", signup);
 router.post("/login", login);
 
+router.get("/logout", (req, res) => {
+    res.clearCookie("token");
+    res.redirect("/");
+  });
+
 export default router;
