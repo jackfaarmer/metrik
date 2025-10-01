@@ -1,20 +1,33 @@
-Current Plan
-
 metrik/
-│    src/
-│    ├── index.js          # entry point
-│    ├── routes/
-│    │   ├── auth.js       # login + signup routes
-│    │   └── home.js       # landing page routes
-│    ├── controllers/
-│    │   └── authController.js
-│    ├── views/
-│    │   └── index.ejs   
-│    │   └── home.ejs   
-│    ├── middleware/
-│    │   └── authMiddleware.js
-│    └── users.json        # temporary user storage (replace w/ DB later)
-├── .env
+│
+├── src/
+│   ├── backend/                     # API + business logic
+│   │   ├── index.js                 # Express entry
+│   │   ├── routes/
+│   │   │   ├── auth.js              # login + signup routes
+│   │   │   └── home.js              # landing routes
+│   │   ├── controllers/
+│   │   │   └── authController.js
+│   │   ├── middleware/
+│   │   │   └── authMiddleware.js
+│   │   └── users.json               # temp storage (replace later w/ DB)
+│   │
+│   ├── frontend/                    # React frontend
+│   │   ├── public/
+│   │   ├── src/
+│   │   │   ├── App.js
+│   │   │   ├── pages/
+│   │   │   │   ├── Login.js
+│   │   │   │   ├── Signup.js
+│   │   │   │   └── Home.js
+│   │   │   └── components/
+│   │   │       └── Navbar.js
+│   │   └── package.json (optional, if using CRA/Vite scaffolding, else removed)
+│   │
+│   └── views/                       # if you ever want server-side rendered views (optional)
+│
+├── package.json                     # main project package.json (scripts here)
 ├── .gitignore
-├── package.json
-└── README.md
+├── .env
+├── README.md
+└── plan.md                          # updated project roadmap

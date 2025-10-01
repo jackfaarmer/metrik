@@ -1,34 +1,24 @@
 {
   "name": "metrik",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.js",
+  "description": "Metrik - unified metrics ingestion and dashboard app",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/main.js",
-    "dev": "nodemon src/main.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jackfaarmer/metrik.git"
+    "dev:server": "nodemon backend/index.js",
+    "dev:client": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:server\" \"npm run dev:client\"",
+    "build": "cd frontend && npm run build && cp -r dist/* ../backend/public/",
+    "start": "node backend/index.js"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jackfaarmer/metrik/issues"
-  },
-  "homepage": "https://github.com/jackfaarmer/metrik#readme",
+  "license": "MIT",
   "dependencies": {
-    "bcrypt": "^6.0.0",
-    "cookie-parser": "^1.4.7",
     "dotenv": "^17.2.2",
-    "ejs": "^3.1.10",
-    "express": "^5.1.0",
-    "jsonwebtoken": "^9.0.2"
+    "express": "^5.1.0"
   },
   "devDependencies": {
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "concurrently": "^9.0.0"
   }
 }
